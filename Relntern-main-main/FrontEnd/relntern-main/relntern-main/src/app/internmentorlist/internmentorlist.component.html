@@ -1,0 +1,53 @@
+<app-headers></app-headers>
+
+<nav aria-label="breadcrumb" class="mt-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a (click)="navigateTo()">Home</a></li>
+        <li class="breadcrumb-item" aria-current="page">List of Interns</li>
+    </ol>
+</nav>
+
+<div class="container mx-auto mt-4 px-4">
+    <div id="table-div" class="bg-white rounded-xl shadow-lg overflow-x-auto">
+        <table class="min-w-full text-center">
+            <thead>
+                <tr class="bg-slate-700 text-center text-lg">
+                    <th scope="col" class="py-4 px-4 text-white">Intern ID</th>
+                    <th scope="col" class="py-4 px-4 text-white">Full Name</th>
+                    <th scope="col" class="py-4 px-4 text-white">Mentor</th>
+                    <th scope="col" class="py-4 px-4 text-white">End Date</th>
+                    <th scope="col" class="py-4 px-4 text-white">Association</th>
+                    <th scope="col" class="py-4 px-4 text-white">View Task</th>
+                    <th scope="col" class="py-4 px-4 text-white" *ngIf="isMentor || isAdmin">Update</th>
+                    <th scope="col" class="py-4 px-4 text-white" *ngIf="isMentor || isAdmin">Inactive</th>
+                    <th scope="col" class="py-4 px-4 text-white">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let intern of internList" id="list-hover"
+                    class="text-center items-center justify-center font-bold">
+                    <td class="py-3 px-4 cursor-pointer" (click)="openProfile(intern)">{{intern.id}}</td>
+                    <td id="hover-change" class="py-3 px-4 hover:font-bold cursor-pointer"
+                        (click)="openProfile(intern)">
+                        {{intern.fullname}}</td>
+                    <td class="py-3 px-4 cursor-pointer" (click)="openProfile(intern)">{{intern.mentor}}</td>
+                    <td class="py-3 px-4 cursor-pointer" (click)="openProfile(intern)">{{intern.endDate}}</td>
+                    <td class="py-3 px-4 cursor-pointer" (click)="openProfile(intern)">{{intern.association}}</td>
+                    <td class="py-2 px-4"><button
+                            class="rounded-lg text-lg px-4 py-1 text-center mr-2 text-white btn btn-primary"
+                            (click)="gotopage(intern.id)">View Task</button></td>
+                    <td class="py-2 px-4" *ngIf="isMentor || isAdmin"><button
+                            class="rounded-lg text-lg px-4 py-1 text-center mr-2 text-white btn btn-primary"
+                            (click)="openEdit(intern)">Update</button></td>
+                    <td class="py-2 px-4" *ngIf="isMentor || isAdmin"><button
+                            class="rounded-lg text-lg px-4 py-1 text-center mr-2 text-white btn btn-primary"
+                            (click)="openDialog(intern.id)">Inactive</button></td>
+                    <td class="py-2 px-4"><button
+                            class="rounded-lg text-lg px-4 py-1 text-center mr-2 text-white btn btn-primary"
+                            (click)="deleteIntern(intern.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <span class="m-4"></span>
+</div>

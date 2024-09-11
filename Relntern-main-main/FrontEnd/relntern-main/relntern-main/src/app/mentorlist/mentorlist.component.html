@@ -1,0 +1,34 @@
+<app-headers></app-headers>
+  <nav aria-label="breadcrumb" class="mt-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a (click)="navigateTo()">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Mentor List</li>
+    </ol>
+  </nav>
+
+    <div class="container mx-auto mt-8 px-4 ">
+        <div id="table-div" class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <table class="min-w-full table-auto text-center">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th scope="col" class="py-2 px-4">Mentor ID</th>
+                        <th scope="col" class="py-2 px-4">Mentor Full Name</th>
+                        <!-- <th scope="col" class="py-2 px-4">Role</th> -->
+                        <th scope="col" class="py-2 px-4">Association</th>
+                        <th scope="col" class="py-2 px-4">Mentor Email</th>
+                        <th scrope="col" class="py-2 px-2" *ngIf="isAdmin">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let mentor of mentorDetails" id="list-hover">
+                        <td class="py-2 px-4">{{mentor.mentorid}}</td>
+                        <td class="py-2 px-4">{{mentor.mentorname}}</td>
+                        <!-- <td class="py-2 px-4">{{mentor.projectstatus}}</td> -->
+                        <td class="py-2 px-4">{{mentor.association}}</td>
+                        <td class="py-2 px-4">{{mentor.mentoremail}}</td>
+                        <td class="py-2 px-2" *ngIf="isAdmin"><button class="btn btn-primary" (click)="openMentorDetete(mentor.mentorid)" >Delete Mentor</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

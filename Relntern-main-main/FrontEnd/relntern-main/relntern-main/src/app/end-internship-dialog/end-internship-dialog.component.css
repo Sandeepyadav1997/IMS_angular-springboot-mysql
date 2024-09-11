@@ -1,0 +1,45 @@
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+mat-error {
+  color: red;
+  font-size: 14px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 8px; /* Space between the buttons */
+}
+
+.close-button {
+  color: white !important; /* Ensure text color is white */
+  background-color: #f44336!important; /* Red background for Close button */
+  padding: 8px 16px; /* Add padding inside the button */
+}
+
+.save-button {
+  color: white !important; /* Ensure text color is white */
+  background-color: #2830cc !important; /* Blue background for Save button */
+  padding: 8px 16px; /* Add padding inside the button */
+}
+.save-button-disabled {
+  background-color: gray; /* Gray background for disabled button */
+  color: #ffffff !important; /* Light gray text for disabled button */
+  cursor: not-allowed; /* Not-allowed cursor for disabled button */
+}

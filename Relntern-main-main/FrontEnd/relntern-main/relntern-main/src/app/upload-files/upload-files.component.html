@@ -1,0 +1,97 @@
+<div class="container mt-5 p-4 bg-light shadow rounded">
+  <h2 class="mb-4 text-dark">Upload Multiple Files</h2>
+
+  <!-- File Input and Upload Button -->
+  <div class="mb-3">
+    <label for="fileInput" class="form-label">Choose Files:</label>
+    <input
+      id="fileInput"
+      type="file"
+      (change)="onFileChange($event)"
+      multiple
+      class="form-control"
+    />
+  </div>
+
+  <button (click)="uploadFiles()" class="btn btn-primary">Upload</button>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="alert alert-success mt-4" role="alert">
+    {{ successMessage }}
+  </div>
+
+  <!-- Selected Files List -->
+  <div *ngIf="selectedFiles.length > 0" class="mt-4">
+    <h4 class="text-dark">Selected Files:</h4>
+    <ul class="list-group">
+      <li
+        *ngFor="let file of selectedFiles; let i = index"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        {{ file.name }}
+        <button (click)="removeFile(i)" class="btn btn-danger btn-sm ms-2">
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Upload Progress -->
+  <div *ngIf="progressInfos.length > 0" class="mt-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Upload Progress</h3>
+        <ul class="list-group">
+          <li *ngFor="let progressInfo of progressInfos" class="list-group-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>{{ progressInfo.fileName }}</span>
+              <div class="progress w-75 ms-2">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  [style.width.%]="progressInfo.progress"
+                  [attr.aria-valuenow]="progressInfo.progress"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  {{ progressInfo.progress }}%
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Messages -->
+  <div *ngIf="errorMessages.length > 0" class="mt-4">
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">Errors</h4>
+      <ul class="list-unstyled">
+        <li *ngFor="let errorMessage of errorMessages">{{ errorMessage }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Uploaded Files List -->
+  <div *ngIf="fileNames.length > 0" class="mt-4">
+    <h4 class="text-dark">Uploaded Files:</h4>
+    <ul class="list-group">
+      <li
+        *ngFor="let fileName of fileNames"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        {{ fileName }}
+        <div>
+          <button (click)="downloadFile(fileName)" class="btn btn-link">
+            Download
+          </button>
+          <button (click)="deleteFile(fileName)" class="btn btn-danger btn-sm ms-2">
+            Delete
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

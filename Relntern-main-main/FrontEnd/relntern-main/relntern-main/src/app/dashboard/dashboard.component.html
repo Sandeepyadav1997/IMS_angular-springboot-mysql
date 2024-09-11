@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relntern Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="md:px-6 h-auto bg-white">
+  <nav>
+    <header class="bg-white py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="text-black text-xl font-bold flex items-center">
+          <img class="mx-auto md:h-16 h-12 w-auto cursor-pointer"
+            src="https://1000logos.net/wp-content/uploads/2021/08/Reliance-Industries-Limited-RIL-Logo-500x314.jpg"
+            alt="Your Company">
+        </div>
+        <div>
+          <div class="flex space-x-4 text-black">
+            <div id="Logout"><button type="button"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+              (click)="goToPage('admin-signup')">Register Admin</button></div>
+            <div id="Logout"><button type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                (click)="logout()">Logout</button></div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </nav>
+  <nav aria-label="breadcrumb" class="mt-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
+  </nav>
+  <main class="container mx-auto mt-8 px-4">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2" id="add-intern-text">Add Interns</h3>
+        <!-- <p class="text-gray-700">Click here to add a new intern</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('add')">Add Intern</button>
+      </div>
+
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">List of Interns</h3>
+        <!-- <p class="text-gray-700">View list of interns</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('list')">View List</button>
+      </div>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">Schedule</h3>
+        <!-- <p class="text-gray-700">Click here to view available slots</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('schedule')">Schedule</button>
+      </div>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">Past Interns</h3>
+        <!-- <p class="text-gray-700">Click here to view the past interns</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('inactive')">View List</button>
+      </div>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">Add Mentor</h3>
+        <!-- <p class="text-gray-700">Click here to add mentor</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('addmentor')">Add Mentor</button>
+      </div>
+      <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl" id="dashboard-menu">
+        <h3 class="text-xl font-bold mb-2">Mentor List</h3>
+        <!-- <p class="text-gray-700">Click here to view mentor list</p> -->
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          (click)="goToPage('mentorlist')">View Mentor list</button>
+      </div>
+    </div>
+  </main>
+  
+
+</body>
+
+
+<footer class="p-4 bg-white md:p-8 dark:bg-gray-800 mt-12">
+  <div class="mx-auto max-w-screen-xl text-center">
+
+
+    <p class=" text-gray-500 dark:text-gray-400">Relntern- Managing made easy</p>
+
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023-2026 <a href="#"
+        class="hover:underline">Relntern</a>. For Interns, By Interns.</span>
+  </div>
+</footer>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intern Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="">
+    <div class="flex justify-end">
+        <button (click)="closeDialog()"
+            class="font-bold rounded-lg text-lg px-4 py-1.5 text-center mt-2 mr-2 text-black bg-slate-300">
+            X
+        </button>
+    </div>
+    <div class="container mx-auto mt-2">
+        <div class="grid-container">
+            <div class="grid-item border-2">
+                <h3 class="profile-name">{{ internProfile.fullname }}</h3>
+                <p class="profile-role">{{internProfile.role}}</p>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title"><u>Personal Information</u></h3>
+                <div class="info-item"><strong>ID: </strong>{{ internProfile.id }}</div>
+                <div class="info-item"><strong>DOB: </strong>{{ internProfile.dob }}</div>
+                <div class="info-item"><strong>Email: </strong>{{ internProfile.email }}</div>
+                <div class="info-item"><strong>Phone: </strong>{{ internProfile.phone }}</div>
+                <div class="info-item"><strong>Location: </strong>{{ internProfile.location }}</div>
+                <div class="info-item"><strong>Linkedin URL: </strong> {{internProfile.linkedlink}}</div>
+                <div class="info-item"><strong>Quarter: </strong> {{internProfile.quarter}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title"><u>Project Details</u></h3>
+                <div class="info-item"><strong>Project Name: </strong>{{ internProfile.projectname }}</div>
+                <div class="info-item"><strong>Start Date: </strong> {{ internProfile.startDate}}</div>
+                <div class="info-item"><strong>End Date: </strong> {{ internProfile.endDate}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title"><u>Educational Details</u></h3>
+                <div class="info-item"><strong>University: </strong> {{ internProfile.uniname}}</div>
+                <div class="info-item"><strong>Course Name: </strong> {{ internProfile.coursename}}</div>
+                <div class="info-item"><strong>Specialization: </strong> {{ internProfile.specialization}}</div>
+                <div class="info-item"><strong>Graduation Year: </strong> {{ internProfile.gradyear}}</div>
+                <div class="info-item"><strong>Semester Joined: </strong> {{ internProfile.semester}}</div>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="section-title"><u>Mentor Details</u></h3>
+                <div class="info-item"><strong>Mentor Name: </strong> {{ internProfile.mentor }}</div>
+                <div class="mentor-details"><strong>Mentor Email: </strong>{{ internProfile.mentoremail }}</div>
+                <div class="mentor-details"><strong>Association: </strong>{{ internProfile.association }}</div>
+            </div>
+            <!-- <div *ngIf="isMentor && uploadedFiles.length > 0" class=" mt-2 grid-item border outline-dashed outline-2 outline-offset-1">
+                <h3 class="section-title"><u>Uploaded Document</u></h3>
+                <table class="w-full border-2 ">
+                    <thead class="w-1/2 border">
+                        <th class="text-center font-bold py-2">Document</th>
+                        <th class="text-center font-bold py-2">Submitted On</th>
+                    </thead>
+                    <tbody class="w-1/2">
+                    <tr *ngFor="let files of uploadedFiles" class="">
+                        <td class="w-1/2 text-center py-2"><a><u>{{files.docname}}</u></a></td>
+                        <td class="w-1/2 text-center py-2">{{files.date}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="mt-3 items-center border-2 p-2">
+                    <div class="text-xl font-bold "><u>Close Internship and trigger mails <mat-icon>question_mark</mat-icon></u></div>
+                    <button (click)="closeInternship(this.internProfile.id)" class=" items-center mt-3 font-bold rounded-lg text-lg px-4 py-1 text-center text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 shadow-lg shadow-yellow-500/50 dark:shadow-lg dark:shadow-yellow-800/80">Close Internship</button>
+                    
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+</body>
+
+</html>

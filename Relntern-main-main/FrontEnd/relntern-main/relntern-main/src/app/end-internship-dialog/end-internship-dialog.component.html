@@ -1,0 +1,70 @@
+<div mat-dialog-content class="dialog-content">
+  <p>{{ data.message }}</p>
+
+  <div class="file-upload">
+    <!-- PDF Upload -->
+    <button mat-raised-button (click)="onFileSelect(pdfInput)">Upload PDF</button>
+    <input type="file" accept=".pdf" #pdfInput (change)="onFileChange($event, 'pdf')" multiple style="display: none;">
+    <div class="file-info" *ngFor="let file of fileMapping.pdf.files">
+      <a [href]="file.url" target="_blank">{{ file.name }}</a>
+      <button mat-icon-button (click)="removeFile(file, 'pdf')" aria-label="Remove PDF file">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-error *ngIf="fileMapping.pdf.errorMessage">{{ fileMapping.pdf.errorMessage }}</mat-error>
+  </div>
+
+  <div class="file-upload">
+    <!-- Presentation Upload -->
+    <button mat-raised-button (click)="onFileSelect(presentationInput)">Upload Presentation</button>
+    <input type="file" accept=".ppt,.pptx" #presentationInput (change)="onFileChange($event, 'presentation')" multiple style="display: none;">
+    <div class="file-info" *ngFor="let file of fileMapping.presentation.files">
+      <a [href]="file.url" target="_blank">{{ file.name }}</a>
+      <button mat-icon-button (click)="removeFile(file, 'presentation')" aria-label="Remove presentation file">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-error *ngIf="fileMapping.presentation.errorMessage">{{ fileMapping.presentation.errorMessage }}</mat-error>
+  </div>
+
+  <div class="file-upload">
+    <!-- ZIP Upload -->
+    <button mat-raised-button (click)="onFileSelect(zipInput)">Upload ZIP</button>
+    <input type="file" accept=".zip" #zipInput (change)="onFileChange($event, 'zip')" multiple style="display: none;">
+    <div class="file-info" *ngFor="let file of fileMapping.zip.files">
+      <a [href]="file.url" target="_blank">{{ file.name }}</a>
+      <button mat-icon-button (click)="removeFile(file, 'zip')" aria-label="Remove ZIP file">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-error *ngIf="fileMapping.zip.errorMessage">{{ fileMapping.zip.errorMessage }}</mat-error>
+  </div>
+
+  <div class="file-upload">
+    <!-- TXT Upload -->
+    <button mat-raised-button (click)="onFileSelect(txtInput)">Upload TXT</button>
+    <input type="file" accept=".txt" #txtInput (change)="onFileChange($event, 'txt')" multiple style="display: none;">
+    <div class="file-info" *ngFor="let file of fileMapping.txt.files">
+      <a [href]="file.url" target="_blank">{{ file.name }}</a>
+      <button mat-icon-button (click)="removeFile(file, 'txt')" aria-label="Remove TXT file">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-error *ngIf="fileMapping.txt.errorMessage">{{ fileMapping.txt.errorMessage }}</mat-error>
+  </div>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button class="close-button" [mat-dialog-close]="true">Close</button>
+  <button
+    mat-button
+    [ngClass]="{
+      'save-button': isFormValid(),
+      'save-button-disabled': !isFormValid()
+    }"
+    (click)="onSubmit()"
+    [disabled]="!isFormValid()"
+    [attr.title]="!isFormValid() ? 'Upload PDF and Presentation files to send' : null">
+    Save
+  </button>
+</div>

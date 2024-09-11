@@ -1,0 +1,86 @@
+<app-headers></app-headers>
+<nav aria-label="breadcrumb" class="mt-4">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a (click)="goToPage('dashboard')">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add Admin</li>
+  </ol>
+</nav>
+
+<main class="container mx-auto mt-8 px-4">
+  <div class="bg-white rounded-lg shadow-lg p-8">
+    <h2 class="text-2xl font-bold mb-4">Admin Registration</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-700 font mb-2 required" for="adminName">Admin Name
+            <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="adminName" formControlName="adminName"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter Admin name">
+          <div
+            *ngIf="registerForm.get('adminName')?.invalid && (registerForm.get('adminName')?.touched || registerForm.get('adminName')?.dirty)"
+            class="error-message">
+            <div *ngIf="registerForm.get('adminName')?.hasError('required')">Admin Name is required.</div>
+            <div *ngIf="registerForm.get('adminName')?.hasError('pattern')">Admin Name must only contain letters and
+              spaces.</div>
+            <div *ngIf="registerForm.get('adminName')?.hasError('minlength')">Admin Name must be at least 2 characters
+              long.</div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font mb-2 required" for="Email">Admin Email
+            <span class="text-red-500">*</span>
+          </label>
+          <input type="email" id="Email" formControlName="email"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter admin email">
+          <div
+            *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)"
+            class="error-message">
+            <div *ngIf="registerForm.get('email')?.hasError('required')">Admin Email is required.</div>
+            <div *ngIf="registerForm.get('email')?.hasError('email')">Enter a valid email address.</div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font mb-2" for="adminPhone">Phone Number</label>
+          <input type="tel" id="adminPhone" formControlName="adminPhone"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter phone number">
+          <div
+            *ngIf="registerForm.get('adminPhone')?.invalid && (registerForm.get('adminPhone')?.touched || registerForm.get('adminPhone')?.dirty)"
+            class="error-message">
+            <div *ngIf="registerForm.get('adminPhone')?.hasError('pattern')">Enter a valid 10-digit phone number.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <ul class="flex space-x-4 text-black">
+          <li>
+            <button type="submit" [disabled]="registerForm.invalid"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+              Register
+            </button>
+          </li>
+          <li>
+            <button type="button" (click)="goToPage('dashboard')"
+              class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
+              Cancel
+            </button>
+          </li>
+          <li>
+            Already Registered?
+            <button type="button" (click)="goToPage('adminregister')"
+              class="bg-orange-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+              Sign up here
+            </button>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</main>
